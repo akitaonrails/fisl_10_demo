@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Post do
   it "should be valid" do
-    Post.new.should be_valid
+    Post.new(:titulo => "foo").should be_valid
   end
   
   it "should convert Textile markup to HTML" do

@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   has_many :comments
   before_save :filtro_html
+  validates_presence_of :titulo
   
   def self.per_page
     5

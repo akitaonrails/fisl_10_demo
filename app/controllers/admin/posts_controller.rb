@@ -1,6 +1,7 @@
 class Admin::PostsController < ApplicationController
   layout "admin/admin"
   before_filter :require_user
+  before_filter :load_uploads, :only => [:new, :edit, :update, :create]
   cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
   
   def index
@@ -13,7 +14,6 @@ class Admin::PostsController < ApplicationController
   
   def new
     @post = Post.new
-    @uploads = Upload.all(:order => "created_at DESC", :limit => 10)
   end
   
   def create
@@ -28,7 +28,6 @@ class Admin::PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])
-    @uploads = Upload.all(:order => "created_at DESC", :limit => 10)
   end
   
   def update
@@ -48,7 +47,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     redirect_to(admin_posts_path) and return if params[:cancel]
     @post = Post.find(params[:id])
-    #@post.destroy
+    @post.destroy
     
     respond_to do |wants|
       wants.html do 
@@ -57,5 +56,11 @@ class Admin::PostsController < ApplicationController
       end
       wants.js { head :ok }
     end
+  end
+  
+  private
+  
+  def load_uploads
+    @uploads = Upload.all(:order => "created_at DESC", :limit => 10)
   end
 end

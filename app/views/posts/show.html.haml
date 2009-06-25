@@ -2,7 +2,7 @@
 
 %small 
   Publicado em
-  = @post.created_at.to_s(:small)
+  = @post.created_at.to_s(:short)
 
 %p
   =@post.descricao_html
@@ -17,10 +17,11 @@
     %li
       %p= link_to comment.autor, comment.url
       disse em 
-      = comment.created_at.to_s(:small)
+      = comment.created_at.to_s(:short)
       %p= comment.comentario
 
 - form_for [@post, Comment.new] do |f|
+  = f.error_messages
   %p
     = f.label :autor
     %br 

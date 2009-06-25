@@ -3,7 +3,7 @@ Dado /^que estou logado$/ do
   visit login_path
   fill_in "email", :with => "john@doe.com"
   fill_in "password", :with => "john"
-  click_button "Submit"
+  click_button "Enviar"
 end
 
 Dado /^que estou na homepage$/ do
