@@ -5,7 +5,10 @@
   = @post.created_at.to_s(:small)
 
 %p
-  =h @post.texto
+  =@post.descricao_html
+
+%p
+  =@post.texto_html
 
 %h3 Comentário
 

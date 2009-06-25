@@ -4,7 +4,7 @@
   - for post in @posts
     %li
       %h3= link_to post.titulo, admin_post_path(post)
-      %p= post.texto
+      %p= post.descricao_html
       %small
         = link_to 'Editar', edit_admin_post_path(post)
         |
