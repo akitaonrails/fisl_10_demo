@@ -10,3 +10,5 @@
         )
       %p
         =h comment.comentario
+
+%p= will_paginate @comments, :previous_label => "&laquo; Anterior", :next_label => 'Próximo &raquo;'

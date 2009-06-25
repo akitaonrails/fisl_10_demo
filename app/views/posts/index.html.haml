@@ -5,3 +5,5 @@
     %li
       %h3= link_to post.titulo, post_path(post)
       %p= post.descricao_html
+
+%p= will_paginate @posts, :previous_label => "&laquo; Anterior", :next_label => 'Próximo &raquo;'

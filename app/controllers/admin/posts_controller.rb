@@ -1,6 +1,8 @@
 class Admin::PostsController < ApplicationController
+  layout "admin/admin"
+  
   def index
-    @posts = Post.all(:order => "created_at DESC")
+    @posts = Post.paginate :page => params[:page], :order => "created_at DESC"
   end
   
   def show

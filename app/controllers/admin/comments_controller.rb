@@ -1,6 +1,8 @@
 class Admin::CommentsController < ApplicationController
+  layout "admin/admin"
+
   def index
-    @comments = Comment.all(:order => "created_at DESC")
+    @comments = Comment.paginate :page => params[:page], :order => "created_at DESC"
   end
   
   def destroy

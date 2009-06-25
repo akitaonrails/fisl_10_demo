@@ -10,4 +10,6 @@
         |
         = link_to 'Apagar', [:admin,post], :confirm => 'Tem Certeza?', :method => :delete
 
+%p= will_paginate @posts, :previous_label => "&laquo; Anterior", :next_label => 'Próximo &raquo;'
+
 %p= link_to "Novo Post", new_admin_post_path

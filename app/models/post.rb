@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
   has_many :comments
   before_save :filtro_html
   
+  def self.per_page
+    5
+  end
+  
   private
   
   def filtro_html
