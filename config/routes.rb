@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     :requirements => { :page => /\d+/ }, :page => nil
 
   map.namespace :admin do |admin|
-    admin.resources :posts
+    admin.resources :posts, :member => { :confirm_destroy => :get }
     admin.resources :comments
     admin.resources :uploads
   end

@@ -13,6 +13,6 @@
 %p
   = link_to "Editar", edit_admin_post_path(@post)
   |
-  = link_to "Apagar", [:admin,@post], :confirm => 'Are you sure?', :method => :delete
+  = link_to "Apagar", [:confirm_destroy, :admin,@post], :class => "delete" }
   |
   = link_to "Voltar", admin_posts_path

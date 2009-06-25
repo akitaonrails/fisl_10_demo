@@ -41,10 +41,21 @@ class Admin::PostsController < ApplicationController
     end
   end
   
-  def destroy
+  def confirm_destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "Successfully destroyed post."
-    redirect_to admin_posts_url
+  end
+  
+  def destroy
+    redirect_to(admin_posts_path) and return if params[:cancel]
+    @post = Post.find(params[:id])
+    #@post.destroy
+    
+    respond_to do |wants|
+      wants.html do 
+        flash[:notice] = "Successfully destroyed post."
+        redirect_to admin_posts_url
+      end
+      wants.js { head :ok }
+    end
   end
 end

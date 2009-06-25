@@ -1,0 +1,10 @@
+- title "Confirma Apagar?"
+
+%p 
+  Confirma apagar o post 
+  = @post.titulo
+  ?
+
+- form_for [:admin, @post], :html => { :method => :delete } do |f|
+  = f.submit "Sim"
+  = f.submit "Não", :name => "cancel"
