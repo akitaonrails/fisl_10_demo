@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.resource :account, :controller => "users", :action => "edit"
+  map.resources :user_sessions
+  map.resources :users
+
   map.namespace :admin do |admin|
     admin.resources :posts
     admin.resources :comments

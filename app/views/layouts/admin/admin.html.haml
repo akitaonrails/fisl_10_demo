@@ -10,6 +10,15 @@
   
   %body
     #container
+      #user_nav
+        = link_to "Posts", admin_posts_path
+        |
+        = link_to "Comentários", admin_comments_path
+        |
+        = link_to "Perfil", edit_user_path(:current)
+        |
+        = link_to "Logout", logout_path
+
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       

@@ -1,3 +1,11 @@
+Dado /^que estou logado$/ do
+  Factory(:valid_user)
+  visit login_path
+  fill_in "email", :with => "john@doe.com"
+  fill_in "password", :with => "john"
+  click_button "Submit"
+end
+
 Dado /^que estou na homepage$/ do
   visit admin_posts_url
 end

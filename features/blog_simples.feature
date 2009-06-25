@@ -5,7 +5,8 @@ Como um evangelizador
 Quero poder mostrar um blog em funcionamento
 
 Cenário: Criar Posts
-  Dado que estou na homepage
+  Dado que estou logado
+  E que estou na homepage
   E clico em "Novo Post"
   Quando for redirecionado para a página de Criar Post
   E preencher o "titulo" com "Meu primeiro post"
@@ -20,6 +21,7 @@ Cenário: Criar Comentário
   Então quero ver o comentário listado "meu comentário"
 
 Cenário: Apagar Comentário
-  Dado que estou visualizando a lista de comentários
+  Dado que estou logado
+  E que estou visualizando a lista de comentários
   Quando clicar em "Apagar"
   Então quero que o comentário seja apagado

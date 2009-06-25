@@ -1,5 +1,6 @@
 class Admin::PostsController < ApplicationController
   layout "admin/admin"
+  before_filter :require_user
   
   def index
     @posts = Post.paginate :page => params[:page], :order => "created_at DESC"

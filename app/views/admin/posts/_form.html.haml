@@ -4,7 +4,7 @@
 
   - form_for :upload, Upload.new, :url => admin_uploads_path, :html => { :multipart => true } do |form|
     = form.file_field :imagem
-    = form.submit "Enviar"
+    = form.submit "Upload"
 
 - form_for [:admin, @post] do |f|
   = f.error_messages

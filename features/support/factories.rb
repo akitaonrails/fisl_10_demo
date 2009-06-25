@@ -14,3 +14,9 @@ Factory.define :valid_comment, :class => Comment do |p|
   p.url "http://www.akitaonrails.com"
   p.comentario "meu comentario"
 end
+
+Factory.define :valid_user, :class => User do |u|
+  u.email 'john@doe.com'
+  u.password 'john'
+  u.password_confirmation 'john'
+end

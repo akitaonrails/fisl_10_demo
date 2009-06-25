@@ -66,3 +66,8 @@ a {
   float: right;
   width: 300px;
 }
+
+#user_nav {
+  float: right;
+  font-size: 12px;
+}

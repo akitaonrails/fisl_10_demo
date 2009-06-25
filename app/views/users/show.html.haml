@@ -1,0 +1,30 @@
+- title "User"
+
+%p
+  %strong Email:
+  =h @user.email
+%p
+  %strong Password:
+  =h @user.password
+%p
+  %strong Login Count:
+  =h @user.login_count
+%p
+  %strong Last Request At:
+  =h @user.last_request_at
+%p
+  %strong Last Login At:
+  =h @user.last_login_at
+%p
+  %strong Current Login At:
+  =h @user.current_login_at
+%p
+  %strong Last Login Ip:
+  =h @user.last_login_ip
+%p
+  %strong Current Login Ip:
+  =h @user.current_login_ip
+
+%p
+  = link_to "Edit", edit_user_path(@user)
+  |
