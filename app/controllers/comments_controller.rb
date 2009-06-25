@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :load_post
+  cache_sweeper :comment_sweeper, :only => [:create]
   
   def create
     @comment = @post.comments.build(params[:comment])

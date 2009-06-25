@@ -1,6 +1,7 @@
 class Admin::PostsController < ApplicationController
   layout "admin/admin"
   before_filter :require_user
+  cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
   
   def index
     @posts = Post.paginate :page => params[:page], :order => "created_at DESC"

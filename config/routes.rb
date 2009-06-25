@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users", :action => "edit"
   map.resources :user_sessions
   map.resources :users
+  
+  map.connect "posts/page/:page", :controller => "posts", :action => "index",
+    :requirements => { :page => /\d+/ }, :page => nil
 
   map.namespace :admin do |admin|
     admin.resources :posts

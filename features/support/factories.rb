@@ -13,6 +13,7 @@ Factory.define :valid_comment, :class => Comment do |p|
   p.autor "Fabio"
   p.url "http://www.akitaonrails.com"
   p.comentario "meu comentario"
+  p.post { |p| p.association(:primeiro_post) }
 end
 
 Factory.define :valid_user, :class => User do |u|
