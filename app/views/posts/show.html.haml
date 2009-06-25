@@ -1,0 +1,36 @@
+- title @post.titulo
+
+%p
+  %strong Texto:
+  =h @post.texto
+
+%h3 Comentário
+
+%ul
+  - for comment in @post.comments
+    %li
+      %p= link_to comment.autor, comment.url
+      %p= comment.comentario
+
+- form_for [@post, Comment.new] do |f|
+  %p
+    = f.label :autor
+    %br 
+    = f.text_field :autor
+  %p
+    = f.label :url
+    %br
+    = f.text_field :url
+  %p
+    = f.label :comentario
+    %br
+    = f.text_area :comentario
+  %p
+    = f.submit "Enviar"
+
+%p
+  = link_to "Editar", edit_post_path(@post)
+  |
+  = link_to "Apagar", @post, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "Voltar", posts_path
