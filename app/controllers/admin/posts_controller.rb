@@ -11,6 +11,7 @@ class Admin::PostsController < ApplicationController
   
   def new
     @post = Post.new
+    @uploads = Upload.all(:order => "created_at DESC", :limit => 10)
   end
   
   def create
@@ -25,6 +26,7 @@ class Admin::PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])
+    @uploads = Upload.all(:order => "created_at DESC", :limit => 10)
   end
   
   def update

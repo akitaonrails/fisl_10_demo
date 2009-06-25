@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090625134752) do
+ActiveRecord::Schema.define(:version => 20090625144110) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20090625134752) do
     t.text     "descricao"
     t.text     "descricao_html"
     t.text     "texto_html"
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "imagem_file_name"
+    t.string   "image_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

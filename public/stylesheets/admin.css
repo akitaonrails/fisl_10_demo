@@ -61,3 +61,8 @@ a {
     #errorExplanation ul li {
       font-size: 12px;
       list-style: disc; }
+
+#uploadBox {
+  float: right;
+  width: 300px;
+}
