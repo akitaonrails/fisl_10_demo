@@ -13,7 +13,10 @@ class CommentSweeper < ActionController::Caching::Sweeper
   
   private
   def expire_cache_for(record)
+    cache_dir = ActionController::Base.page_cache_directory
+
     # Isso removera /posts/2.html
-    expire_page(:controller => 'posts', :action => 'show', :id => record.post.id)
+    Rails.logger.info "Expired pages: #{"/posts/#{record.id}.html"}"
+    FileUtils.rm_r("#{cache_dir}/posts/#{record.id}.html") rescue Errno::ENOENT
   end
 end

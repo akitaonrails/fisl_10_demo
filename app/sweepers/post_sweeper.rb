@@ -18,14 +18,18 @@ class PostSweeper < ActionController::Caching::Sweeper
   
   private
   def expire_cache_for(record)
-    # Isso removera /posts.html
-    expire_page(:controller => 'posts', :action => 'index')
+    cache_dir = ActionController::Base.page_cache_directory
+
+    # Isso removera /posts.html e /index.html
+    list = ["#{cache_dir}/index.html", "#{cache_dir}/posts.html"]
+    Rails.logger.info "Expired pages: #{list.map { |f| f.gsub(cache_dir, '') }.join(', ')}"
+    list.each { |f| FileUtils.rm_r(f) rescue Errno::ENOENT }
 
     # Isso removera /posts/2.html
-    expire_page(:controller => 'posts', :action => 'show', :id => record.id)
+    Rails.logger.info "Expired pages: #{"/posts/#{record.id}.html"}"
+    FileUtils.rm_r("#{cache_dir}/posts/#{record.id}.html") rescue Errno::ENOENT
     
     # Isso removera /posts/page/2.html e outras na mesma pasta
-    cache_dir = ActionController::Base.page_cache_directory
     Rails.logger.info "Expired pages: #{Dir.glob("#{cache_dir}/posts/page/*").map { |f| f.gsub(cache_dir, '') }.join(', ')}"
     FileUtils.rm_r(Dir.glob("#{cache_dir}/posts/page/*")) rescue Errno::ENOENT
   end
