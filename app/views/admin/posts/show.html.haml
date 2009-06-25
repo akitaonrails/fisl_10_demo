@@ -1,0 +1,15 @@
+- title @post.titulo
+
+%small 
+  Publicado em
+  = @post.created_at.to_s(:small)
+
+%p
+  =h @post.texto
+
+%p
+  = link_to "Editar", edit_admin_post_path(@post)
+  |
+  = link_to "Apagar", [:admin,@post], :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "Voltar", admin_posts_path

@@ -5,9 +5,3 @@
     %li
       %h3= link_to post.titulo, post_path(post)
       %p= post.texto
-      %small
-        = link_to 'Editar', edit_post_path(post)
-        |
-        = link_to 'Apagar', post, :confirm => 'Tem Certeza?', :method => :delete
-
-%p= link_to "Novo Post", new_post_path

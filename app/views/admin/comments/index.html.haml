@@ -1,0 +1,12 @@
+- title "Comentários"
+
+%ul
+  - for comment in @comments
+    %li
+      %p
+        = link_to comment.autor, comment.url
+        (
+        = link_to "Apagar", admin_comment_path(comment), :confirm => "Tem Certeza?", :method => :delete
+        )
+      %p
+        =h comment.comentario

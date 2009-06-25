@@ -18,3 +18,8 @@ Cenário: Criar Comentário
   Dado que estou visualizando o post "Meu primeiro post"
   Quando preencher o campo de comentário com "meu comentário"
   Então quero ver o comentário listado "meu comentário"
+
+Cenário: Apagar Comentário
+  Dado que estou visualizando a lista de comentários
+  Quando clicar em "Apagar"
+  Então quero que o comentário seja apagado

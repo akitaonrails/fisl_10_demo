@@ -1,7 +1,10 @@
 - title @post.titulo
 
+%small 
+  Publicado em
+  = @post.created_at.to_s(:small)
+
 %p
-  %strong Texto:
   =h @post.texto
 
 %h3 Comentário
@@ -10,6 +13,8 @@
   - for comment in @post.comments
     %li
       %p= link_to comment.autor, comment.url
+      disse em 
+      = comment.created_at.to_s(:small)
       %p= comment.comentario
 
 - form_for [@post, Comment.new] do |f|
@@ -29,8 +34,4 @@
     = f.submit "Enviar"
 
 %p
-  = link_to "Editar", edit_post_path(@post)
-  |
-  = link_to "Apagar", @post, :confirm => 'Are you sure?', :method => :delete
-  |
   = link_to "Voltar", posts_path

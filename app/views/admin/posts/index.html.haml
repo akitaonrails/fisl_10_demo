@@ -1,0 +1,13 @@
+- title "Blog"
+
+%ul
+  - for post in @posts
+    %li
+      %h3= link_to post.titulo, admin_post_path(post)
+      %p= post.texto
+      %small
+        = link_to 'Editar', edit_admin_post_path(post)
+        |
+        = link_to 'Apagar', [:admin,post], :confirm => 'Tem Certeza?', :method => :delete
+
+%p= link_to "Novo Post", new_admin_post_path
