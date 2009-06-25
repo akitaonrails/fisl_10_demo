@@ -137,6 +137,7 @@ namespace :deploy do
   desc "Pede restart ao servidor Passenger"
   task :restart, :roles => :app do
     run "chmod -R 755 #{release_path}"
+    run "cd #{deploy_to}/current && rake gems:build"
     run "touch #{deploy_to}/current/tmp/restart.txt"
   end
 end
